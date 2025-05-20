@@ -540,21 +540,28 @@ nav ul li a:hover:before {
 
 .typing-effect {
   font-family: 'Arial Black', sans-serif;
+  font-size: 2.5rem;
   white-space: nowrap;
   overflow: hidden;
   border-right: 2px solid black;
   width: 0;
-  animation: typing 3s steps(18, end) forwards, blink 0.7s step-end 5;
-  font-size: 2.5rem;
+  animation: typing 3s steps(18, end) 1s forwards, blink 0.7s step-end infinite;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;       /* Runs the animation 3 times */
+  animation-iteration-count: infinite;/* Loops forever */
+  animation-iteration-count: infinite;     /* Plays once fully, then halfway again */
+
 }
 
-/* Typing animation */
+/* Typing animation: typing + deleting loop */
 @keyframes typing {
-  from { width: 0 }
-  to { width: 18ch }  /* 18 characters */
+  0%   { width: 0 }
+  50%  { width: 18ch }
+  100% { width: 0 }
+  
 }
 
-/* Cursor blink */
+/* Blinking cursor */
 @keyframes blink {
   50% { border-color: transparent }
 }
